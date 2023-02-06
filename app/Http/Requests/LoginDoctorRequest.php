@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
 class LoginDoctorRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class LoginDoctorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,8 @@ class LoginDoctorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email' => 'required|email|min:3|max:255',
+            'password' => ['required', Password::defaults()]
         ];
     }
 }

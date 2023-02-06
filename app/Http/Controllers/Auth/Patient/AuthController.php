@@ -39,6 +39,7 @@ class AuthController extends Controller
 
     public function register(StorePatientRequest $request)
     {
+        $request->validated();
 
         if ($request->hasFile('avatar')) {
             $filename = $request->avatar->getClientOriginalName();
