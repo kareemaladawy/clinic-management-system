@@ -22,12 +22,12 @@ class IntegrateWithAIController extends Controller
             }
             return response()->json([
                 'data' => null,
-                'message' => 'response was not successful.'
+                'message' => 'response was not successful. please try again.'
             ], $response->getStatusCode());
         } catch (Exception $e) {
             return response()->json([
                 'data' => null,
-                'message' => 'an exception has occurred.'
+                'message' => 'could not send request. please make sure the requested server is up and running.'
             ], 500);
         }
     }
