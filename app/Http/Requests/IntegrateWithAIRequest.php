@@ -24,7 +24,7 @@ class IntegrateWithAIRequest extends FormRequest
     public function rules()
     {
         return [
-            'attachment' => 'required|mimes:edf|max:10000',
+            'attachment' => 'required|mimes:edf',
             'disease_category' => 'required|in:schizophrenia,epilepsy'
         ];
     }
