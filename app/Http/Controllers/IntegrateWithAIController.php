@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\IntegrateWithAIRequest;
 use Exception;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\ConnectionException;
 
 class IntegrateWithAIController extends Controller
 {
@@ -24,9 +25,9 @@ class IntegrateWithAIController extends Controller
                 'message' => 'response was not successful. please try again.',
                 'data' => null
             ], $response->getStatusCode());
-        } catch (Exception $e) {
+        } catch (ConnectionException $e) {
             return response()->json([
-                'message' => 'could not send request. please make sure the requested server is up and running.',
+                'message' => 'could not connect to AI server.',
                 'data' => null
             ], 500);
         }
