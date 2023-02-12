@@ -24,7 +24,7 @@ class IntegrateWithAIRequest extends FormRequest
     public function rules()
     {
         return [
-            'attachment' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'attachment' => 'required',
             'disease_category' => 'required|in:schizophrenia,epilepsy'
         ];
     }
