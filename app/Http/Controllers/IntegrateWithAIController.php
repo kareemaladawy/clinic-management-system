@@ -23,12 +23,10 @@ class IntegrateWithAIController extends Controller
             }
             return response()->json([
                 'message' => 'response was not successful. please try again.',
-                'data' => null
             ], $response->getStatusCode());
         } catch (ConnectionException $e) {
             return response()->json([
                 'message' => 'could not connect to AI server.',
-                'data' => null
             ], 500);
         }
     }
