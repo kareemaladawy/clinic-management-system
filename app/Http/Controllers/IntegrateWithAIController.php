@@ -28,7 +28,7 @@ class IntegrateWithAIController extends Controller
             return response()->json([
                 'data' => null,
                 'message' => 'an exception has occurred.'
-            ], $response->getStatusCode());
+            ], 500);
         }
     }
 }
