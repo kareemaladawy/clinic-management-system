@@ -13,6 +13,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\SlotController;
+use App\Http\Controllers\IntegrateWithAIController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /// public routes
