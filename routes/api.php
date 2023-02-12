@@ -30,6 +30,9 @@ Route::post('/doctor/login', [DoctorAuth::class, 'login'])->name('doctor.login')
 Route::get('/diseases', [DiseaseController::class, 'index'])->name('diseases.get');
 Route::post('/diseases', [DiseaseController::class, 'store'])->name('diseases.add');
 
+// check
+Route::post('/check', [IntegrateWithAIController::class, 'check'])->name('check');
+
 
 /// protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
