@@ -5,17 +5,28 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DoctorResource;
 use App\Models\Doctor;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DoctorController extends Controller
 {
-    public function profile(Doctor $doctor)
+    public function show($id)
     {
-        $doctor->views++;
+        try {
+            $doctor = Doctor::findOrFail($id);
 
-        return response()->json([
-            'doctor' => new DoctorResource($doctor),
-        ]);
+            $doctor->views++;
+            $doctor->save();
+
+            return response()->json([
+                'doctor' => new DoctorResource($doctor),
+            ], 200);
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'message' => 'doctor not found.'
+            ], 404);
+        }
     }
 
     public function popular(Request $request)

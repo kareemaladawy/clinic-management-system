@@ -47,8 +47,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // --- patient actions --- //
     // get a specific doctor profile
-    Route::get('/doctors/{doctor}', [DoctorController::class, 'profile'])
-        ->name('show-doctor-profile');
+    Route::get('/doctors/{doctor}', [DoctorController::class, 'show'])
+        ->name('patient.view-doctor-profile');
 
     // get popular doctor profiles
     Route::get('/doctors/search/popular', [DoctorController::class, 'popular'])
@@ -73,6 +73,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         ->name('doctor.slots');
     Route::post('/doctor/slots', [SlotController::class, 'store'])
         ->name('doctor.add-slot');
+    Route::get('/patients/{id}', [PatientController::class, 'show'])
+        ->name('doctor.view-patient-profile');
 
 
     // patient diagnosis
